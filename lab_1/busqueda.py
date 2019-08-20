@@ -8,8 +8,13 @@ def binaria(vector, elem):
 	"""vector must be sorted"""
 	i = 0
 	d = len(vector)
-	n = (d-i)/2
-	
+	while 1:
+		n = (d-i)/2
+		if vector[n] == elem:
+			return True
+		elif n > elem:
+			
+
 
 	
 	
