@@ -1,5 +1,7 @@
+import time
 
 def secuencial(vector, elem):
+
 	for i in vector:
 		if i == elem:
 			return True
@@ -14,19 +16,28 @@ def binaria(vector, elem):
 		if vector[n] == elem:
 			return True
 		elif vector[n] > elem:
-			d = n+1
+			d = n-1
 		elif vector[n] < elem:
 			i = n+1
 	return False
+
+def doblada(vector, elem):
+	pass
 			
 
 v = []
 for i in range(1,101):
 	v.append(i)
 
-T = 102
+T = 0
+ini_sec = time.time()
 print(secuencial(v,T))
-print(binaria(v,T))
+end_sec = time.time()
 
-	
+ini_bin = time.time()
+print(binaria(v,T))
+end_bin = time.time()
+
+print('bin: ', end_bin - ini_bin)
+print('sec: ', end_sec - ini_sec)	
 	
