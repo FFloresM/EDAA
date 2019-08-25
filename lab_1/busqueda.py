@@ -1,7 +1,11 @@
 import time
 
 def secuencial(vector, elem):
-
+	"""
+	An iterative sequential search function.
+	It returns True if elem is in vector,
+	otherwise False.
+	"""
 	for i in vector:
 		if i == elem:
 			return True
@@ -22,7 +26,18 @@ def binaria(vector, elem):
 	return False
 
 def doblada(vector, elem):
-	pass
+	"""
+	docstring
+	"""
+	n = len(vector)
+	if vector[0] == elem:
+		return True
+
+	i = 1;
+	while i < n and vector[i] <= x:
+		i = i*2
+
+	#add binary search
 			
 
 v = []
@@ -40,4 +55,3 @@ end_bin = time.time()
 
 print('bin: ', end_bin - ini_bin)
 print('sec: ', end_sec - ini_sec)	
-	
