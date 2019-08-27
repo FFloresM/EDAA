@@ -11,18 +11,16 @@ def secuencial(vector, elem):
 			return True
 	return False
 
-def binaria(vector, elem):
+def binaria(vector, l, r, elem):
 	"""vector must be sorted"""
-	i = 0
-	d = len(vector)-1
-	while i<=d:
-		n = int((d+i)/2)
+	while l <= r:
+		n = int(l+(r-l)/2)
 		if vector[n] == elem:
 			return True
 		elif vector[n] > elem:
-			d = n-1
+			r = n-1
 		elif vector[n] < elem:
-			i = n+1
+			l = n+1
 	return False
 
 def doblada(vector, elem):
@@ -34,24 +32,35 @@ def doblada(vector, elem):
 		return True
 
 	i = 1;
-	while i < n and vector[i] <= x:
+	while i < n and vector[i] <= elem:
 		i = i*2
 
-	#add binary search
-			
+	# binary search
+	return binaria(vector, i/2, min(i,n), elem)
 
-v = []
-for i in range(1,101):
-	v.append(i)
 
-T = 0
-ini_sec = time.time()
-print(secuencial(v,T))
-end_sec = time.time()
+#test
+if __name__ == '__main__':
+	v = []
+	for i in range(1,2**10):
+		v.append(i)
 
-ini_bin = time.time()
-print(binaria(v,T))
-end_bin = time.time()
+	T = 1
 
-print('bin: ', end_bin - ini_bin)
-print('sec: ', end_sec - ini_sec)	
+
+	ini_sec = time.time()
+	print(secuencial(v,T))
+	end_sec = time.time()
+
+	ini_bin = time.time()
+	print(binaria(v,0,len(v)-1,T))
+	end_bin = time.time()
+
+	ini_dob = time.time()
+	print(doblada(v,T))
+	end_dob = time.time()
+
+	#times
+	print('sec: {0:.3f} {1}'.format((end_sec - ini_sec)*100, 'ms'))
+	print('bin: {0:.3f} {1}'.format((end_bin - ini_bin)*100, 'ms'))
+	print('dob: {0:.3f} {1}'.format((end_dob - ini_dob)*100, 'ms'))	
