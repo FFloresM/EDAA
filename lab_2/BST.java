@@ -33,13 +33,14 @@ class Bst{
 			raiz = new Nodo(key);
 			return raiz;
 		}
-		else{
-			if(key < raiz.key)
-				raiz.izq = insertar(raiz.izq, key);
-			else if(key > raiz.key)
-				raiz.der = insertar(raiz.der, key);
-			return raiz;
-		}
+		
+		if(key < raiz.key)
+			raiz.izq = insertar(raiz.izq, key);
+		else if(key > raiz.key)
+			raiz.der = insertar(raiz.der, key);
+		
+		return raiz;
+	
 	}
 
 	void inorder(){
@@ -55,8 +56,21 @@ class Bst{
 		}
 	}
 
+	Nodo search(int k){
+		return buscar(raiz, k);
+	}
+	//si encuentra el elemento lo retorna, sino retorna null
+	Nodo buscar(Nodo raiz, int key){
+		if (raiz == null || raiz.key == key)
+			return raiz;
+		if (raiz.key < key)
+			buscar(raiz.der, key);
+		return buscar(raiz.izq, key);
+
+	}
+
 	public static void main(String[] args){
-		Bst bst = new Bst();
+		Bst bst = new Bst(10);
 		bst.insert(5);
 		bst.insert(3);
 		bst.insert(7);
@@ -65,6 +79,13 @@ class Bst{
 
 		bst.inorder();
 		System.out.println();
+
+		//search test
+		if (bst.search(10)!=null)
+			System.out.println("encontrado!!");
+		else
+			System.out.println("NO EXISTE :(");
+		
 	}
 
 
