@@ -16,19 +16,55 @@ class Bst{
 	Nodo raiz;
 
 	//constructor
-	public Bst(int key){
+	Bst(int key){
 		raiz = new Nodo(key);
 	}
 	//constructor por defecto
-	public Bst(){
+	Bst(){
 		raiz = null;
 	}
 
+	void insert(int key){
+		raiz = insertar(raiz, key);
+	}
+
+	Nodo insertar(Nodo raiz, int key){
+		if (raiz == null){
+			raiz = new Nodo(key);
+			return raiz;
+		}
+		else{
+			if(key < raiz.key)
+				raiz.izq = insertar(raiz.izq, key);
+			else if(key > raiz.key)
+				raiz.der = insertar(raiz.der, key);
+			return raiz;
+		}
+	}
+
+	void inorder(){
+		inOrder(raiz);
+	}
+
+	//muestra el recorrido inorder del bst solo para probar insert.
+	void inOrder(Nodo raiz){
+		if (raiz != null){
+			inOrder(raiz.izq);
+			System.out.print(raiz.key + " ");
+			inOrder(raiz.der);
+		}
+	}
+
 	public static void main(String[] args){
-		Bst arbol_bin = new Bst();
-		arbol_bin.raiz = new Nodo(1);
-		arbol_bin.raiz.izq = new Nodo(2);
-		arbol_bin.raiz.der = new Nodo(3);
+		Bst bst = new Bst();
+		bst.insert(5);
+		bst.insert(3);
+		bst.insert(7);
+		bst.insert(9);
+		bst.insert(1);
+
+		bst.inorder();
+		System.out.println();
 	}
 
 
