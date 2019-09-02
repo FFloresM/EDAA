@@ -11,7 +11,7 @@ class Nodo{
 	}
 }
 
-class Bst{
+public class Bst{
 	/* Clase para arbol*/
 	Nodo raiz;
 
