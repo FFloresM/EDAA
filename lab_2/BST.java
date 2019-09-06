@@ -11,7 +11,7 @@ class Nodo{
 	}
 }
 
-public class Bst{
+class Bst{
 	/* Clase para arbol*/
 	Nodo raiz;
 
@@ -67,6 +67,10 @@ public class Bst{
 			buscar(raiz.der, key);
 		return buscar(raiz.izq, key);
 
+	}
+	//ok
+	boolean esRaiz(int key){
+		return raiz.key == key;
 	}
 
 	/*
