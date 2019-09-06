@@ -69,6 +69,7 @@ public class Bst{
 
 	}
 
+	/*
 	public static void main(String[] args){
 		Bst bst = new Bst(10);
 		bst.insert(5);
@@ -87,6 +88,6 @@ public class Bst{
 			System.out.println("NO EXISTE :(");
 		
 	}
-
+	*/
 
 }
