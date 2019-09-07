@@ -29,44 +29,39 @@ class SplayTree extends Bst{
 		return y;
 	}
 
+
+	void busca(int k){
+		if (buscar(this.raiz, k) != null)
+			splay(k);
+		else
+			System.out.println("Valor no encontrado");
+	}
+
 	void splay(int k){
 		this.raiz = splay(this.raiz, k);
 	}
 
 	Nodo splay(Nodo root, int k){
-		//caso base: la raiz tiene el valor buscado
-		if (root == null || root.key == k)
-			return root;
-		//k se encuentra en subarbol izq
 		if(root.key > k){
-			//k no esta en el subarbol
 			if(root.izq == null)
 				return root;
 			//zig-zig
 			if(root.izq.key > k){
-				//
 				root.izq.izq = splay(root.izq.izq, k);
-				//
 				root = zig(root);
 			}
-			//zig-zag
 			else if(root.izq.key < k){
-				//
 				root.izq.der = splay(root.izq.der, k);
-				//
 				if(root.izq.der != null)
 					root.izq = zag(root.izq);
 			}
-			//segunda rotacion de la raiz
 			if(root.izq == null)
 				return root;
 			return zig(root);
 		}
 		else{
-			//
 			if(root.der == null)
 				return root;
-			//
 			if(root.der.key > k){
 				root.der.izq = splay(root.der.izq, k);
 				if(root.der.izq != null)
@@ -82,13 +77,29 @@ class SplayTree extends Bst{
 
 	}
 
+	void preorder(){
+		preOrder(this.raiz);
+	}
+
+	void preOrder(Nodo nodo){
+		if(nodo != null){
+        System.out.print(nodo.key + " "); 
+        preOrder(nodo.izq); 
+        preOrder(nodo.der); 
+		}
+	}
+
 	public static void main(String[] args){
 		SplayTree spt = new SplayTree(9);
 		spt.insert(4);
 		spt.insert(5);
 		spt.insert(1);
 		spt.insert(10);
-		spt.inOrder();
-		System.out.println();
+		spt.preorder();
+		System.out.println("");
+		spt.busca(0);
+		spt.preorder();
+		System.out.println("");
+		System.out.println(spt.esRaiz(1));
 	}
 }
