@@ -1,5 +1,7 @@
 class SplayTree extends Bst{
-
+	/*
+	 * Splay tree
+	 */
 
 	SplayTree(){
 		super();
@@ -81,6 +83,7 @@ class SplayTree extends Bst{
 		preOrder(this.raiz);
 	}
 
+	//solo para chequear los splays
 	void preOrder(Nodo nodo){
 		if(nodo != null){
         System.out.print(nodo.key + " "); 
@@ -88,7 +91,7 @@ class SplayTree extends Bst{
         preOrder(nodo.der); 
 		}
 	}
-
+	/*
 	public static void main(String[] args){
 		SplayTree spt = new SplayTree(9);
 		spt.insert(4);
@@ -102,4 +105,5 @@ class SplayTree extends Bst{
 		System.out.println("");
 		System.out.println(spt.esRaiz(1));
 	}
+	*/
 }

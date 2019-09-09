@@ -12,7 +12,7 @@ class Nodo{
 }
 
 class Bst{
-	/* Clase para arbol*/
+	/* Clase para arbol binario de busqueda*/
 	Nodo raiz;
 
 	//constructor
