@@ -56,42 +56,48 @@ class Bst{
 		}
 	}
 
-	Nodo search(int k){
+	boolean search(int k){
 		return buscar(raiz, k);
 	}
 	//si encuentra el elemento lo retorna, sino retorna null
-	Nodo buscar(Nodo raiz, int key){
-		if (raiz == null || raiz.key == key)
-			return raiz;
-		if (raiz.key < key)
-			buscar(raiz.der, key);
-		return buscar(raiz.izq, key);
-
+	boolean buscar(Nodo nodo, int key){
+		if (nodo == null)  
+			return false;
+		if (nodo.key == key)
+			return true;
+		return (nodo.key > key)
+			?buscar(nodo.izq, key)
+			:buscar(nodo.der, key);
 	}
 	//ok
 	boolean esRaiz(int key){
 		return raiz.key == key;
 	}
 
-	/*
+	
 	public static void main(String[] args){
-		Bst bst = new Bst(10);
+		Bst bst = new Bst();
 		bst.insert(5);
 		bst.insert(3);
 		bst.insert(7);
 		bst.insert(9);
 		bst.insert(1);
+		bst.insert(10);
+		bst.insert(8);
+		bst.insert(4);
+		bst.insert(6);
 
 		bst.inorder();
 		System.out.println();
-
+		int v = Integer.parseInt(args[0]);
+		System.out.println(v);
 		//search test
-		if (bst.search(10)!=null)
+		if (bst.search(v))
 			System.out.println("encontrado!!");
 		else
 			System.out.println("NO EXISTE :(");
 		
 	}
-	*/
+	
 
 }

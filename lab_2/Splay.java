@@ -1,5 +1,5 @@
 class SplayTree extends Bst{
-	/*
+	/* Clase para 
 	 * Splay tree
 	 */
 
@@ -33,7 +33,7 @@ class SplayTree extends Bst{
 
 
 	void busca(int k){
-		if (buscar(this.raiz, k) != null)
+		if (buscar(this.raiz, k))
 			splay(k);
 		else
 			System.out.println("Valor no encontrado");
