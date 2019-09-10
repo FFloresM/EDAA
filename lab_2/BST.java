@@ -74,30 +74,4 @@ class Bst{
 		return raiz.key == key;
 	}
 
-	
-	public static void main(String[] args){
-		Bst bst = new Bst();
-		bst.insert(5);
-		bst.insert(3);
-		bst.insert(7);
-		bst.insert(9);
-		bst.insert(1);
-		bst.insert(10);
-		bst.insert(8);
-		bst.insert(4);
-		bst.insert(6);
-
-		bst.inorder();
-		System.out.println();
-		int v = Integer.parseInt(args[0]);
-		System.out.println(v);
-		//search test
-		if (bst.search(v))
-			System.out.println("encontrado!!");
-		else
-			System.out.println("NO EXISTE :(");
-		
-	}
-	
-
 }

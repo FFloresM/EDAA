@@ -91,19 +91,5 @@ class SplayTree extends Bst{
         preOrder(nodo.der); 
 		}
 	}
-	/*
-	public static void main(String[] args){
-		SplayTree spt = new SplayTree(9);
-		spt.insert(4);
-		spt.insert(5);
-		spt.insert(1);
-		spt.insert(10);
-		spt.preorder();
-		System.out.println("");
-		spt.busca(0);
-		spt.preorder();
-		System.out.println("");
-		System.out.println(spt.esRaiz(1));
-	}
-	*/
+
 }
