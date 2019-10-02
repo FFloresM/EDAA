@@ -64,5 +64,14 @@ def findBrute(pat, text):
 			l.append(i)
 	return l
 
-	
-		
+if __name__ == '__main__':
+	data = "AVADA KEDAVRA"
+	pat = "AV"
+
+	sa = SuffixArray(data)
+
+	a,b = sa.search(pat) 
+	print(sa.sArr[a:b+1])
+
+	print(findBrute(pat,data))
+
