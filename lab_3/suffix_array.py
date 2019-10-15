@@ -65,6 +65,7 @@ def findBrute(pat, text):
 	return l
 
 if __name__ == '__main__':
+	
 	data = "AVADA KEDAVRA"
 	pat = "AV"
 
