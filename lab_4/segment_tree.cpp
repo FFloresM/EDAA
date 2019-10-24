@@ -80,35 +80,28 @@ public:
 };
 
 int main() {
-  vi A = {18, 17, 13, 19, 15, 11, 20, 99};       // make n a power of 2
-  SegmentTree st(A);
 
-  printf("              idx    0, 1, 2, 3, 4, 5, 6, 7\n");
-  printf("              A is {18,17,13,19,15,11,20,oo}\n");
-  printf("RMQ(1, 3) = %d\n", st.RMQ(1, 3));      // index 2
-  printf("RMQ(4, 7) = %d\n", st.RMQ(4, 7));      // index 5
-  printf("RMQ(3, 4) = %d\n", st.RMQ(3, 4));      // index 4
+  vi A;
+  for (int i = 12; i < 20; ++i)
+  {
+    int max = 1<<i;
+    random_device dev;
+    mt19937 rng(dev());
+    uniform_int_distribution<std::mt19937::result_type> distn(1,100); // distribution in range [1, 6]
+    for (int j = 0; j < max; ++j)
+    {
+      A.push_back(distn(rng));
+    }
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    SegmentTree st(A);
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
-  st.update(5, 5, 77);                           // update A[5] to 77
-  printf("              idx    0, 1, 2, 3, 4, 5, 6, 7\n");
-  printf("Now, modify A into {18,17,13,19,15,77,20,oo}\n");
-  printf("RMQ(1, 3) = %d\n", st.RMQ(1, 3));      // remains index 2
-  printf("RMQ(4, 7) = %d\n", st.RMQ(4, 7));      // now index 4
-  printf("RMQ(3, 4) = %d\n", st.RMQ(3, 4));      // remains index 4
+    //tiempo ms
+    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
+  }
+  
 
-  st.update(0, 3, 30);                           // update A[0..3] to 30
-  printf("              idx    0, 1, 2, 3, 4, 5, 6, 7\n");
-  printf("Now, modify A into {30,30,30,30,15,77,20,oo}\n");
-  printf("RMQ(1, 3) = %d\n", st.RMQ(1, 3));      // [0,1,2,3] all correct
-  printf("RMQ(4, 7) = %d\n", st.RMQ(4, 7));      // remains index 4
-  printf("RMQ(3, 4) = %d\n", st.RMQ(3, 4));      // remains index 4
 
-  st.update(3, 3, 7);                            // update A[3] to 7
-  printf("              idx    0, 1, 2, 3, 4, 5, 6, 7\n");
-  printf("Now, modify A into {30,30,30, 7,15,77,20,oo}\n");
-  printf("RMQ(1, 3) = %d\n", st.RMQ(1, 3));      // now index 3
-  printf("RMQ(4, 7) = %d\n", st.RMQ(4, 7));      // remains index 4
-  printf("RMQ(3, 4) = %d\n", st.RMQ(3, 4));      // now index 3
 
   return 0;    
 }
